@@ -1,3 +1,51 @@
-[gd_scene format=3 uid="uid://y6fg7n0iycdi"]
+[gd_scene load_steps=5 format=3 uid="uid://y6fg7n0iycdi"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://d0t03f4uj5pvr" path="res://PLAYER.tscn" id="1_34b4u"]
+[ext_resource type="Texture2D" uid="uid://ce8qtw43wjou4" path="res://icon.svg" id="2_p0bho"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e5x1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4gxh"]
+size = Vector2(125, 125)
+
+[node name="WORLD" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_34b4u")]
+position = Vector2(0, -73)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 77)
+scale = Vector2(7.635, 0.26)
+physics_material_override = SubResource("PhysicsMaterial_e5x1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_c4gxh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+texture = ExtResource("2_p0bho")
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(202, 5)
+scale = Vector2(2.165, 0.26)
+physics_material_override = SubResource("PhysicsMaterial_e5x1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_c4gxh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform1"]
+texture = ExtResource("2_p0bho")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(395, -71)
+scale = Vector2(2.165, 0.26)
+physics_material_override = SubResource("PhysicsMaterial_e5x1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_c4gxh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+texture = ExtResource("2_p0bho")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -114)
+zoom = Vector2(1.66, 1.66)
